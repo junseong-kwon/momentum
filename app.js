@@ -1,12 +1,15 @@
-const h1 = document.querySelector("div.hello:first-child h1");
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
 
-function hangleTitleClick() {
-  const clickedClass = "clicked";
-  if (h1.classList.contains(clickedClass)) {
-    h1.classList.remove(clickedClass);
-  } else {
-    h1.classList.add(clickedClass);
-  }
+const HIDDEN_CLASSNAME = "hidden";
+
+function onLoginSubmit(event) {
+  event.preventDefault();
+  loginForm.classList.add("HIDDEN_CLASSNAME");
+  const username = loginInput.value;
+  greeting.innerText = `Hello ${username} Good`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-h1.addEventListener("click", hangleTitleClick);
+loginForm.addEventListener("submit", onLoginSubmit);
